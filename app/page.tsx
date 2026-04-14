@@ -153,7 +153,7 @@ export default function Home() {
                 className="absolute top-0 left-0 w-full h-full object-contain bg-black"
               >
                 <source
-                  src="/발표_cowork.mp4"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/발표_cowork.mp4`}
                   type="video/mp4"
                 />
                 이 브라우저는 동영상 재생을 지원하지 않습니다.
