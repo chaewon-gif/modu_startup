@@ -82,7 +82,7 @@ export default function Home() {
               {/* Logo */}
               <div className="flex items-center gap-2">
                 <Image
-                  src="/logo.png"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo.png`}
                   alt="Wonn Factory"
                   width={120}
                   height={36}
