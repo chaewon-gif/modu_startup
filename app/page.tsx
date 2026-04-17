@@ -331,7 +331,7 @@ export default function Home() {
             </button>
 
             {/* 왼쪽: 이미지 */}
-            <div className="relative flex-shrink-0" style={{ width: "55%" }}>
+            <div className="relative flex-shrink-0" style={{ width: "72%" }}>
               <Image
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${lightbox.src}`}
                 alt={lightbox.title}
@@ -341,11 +341,11 @@ export default function Home() {
             </div>
 
             {/* 오른쪽: 제목 + 설명 */}
-            <div className="flex flex-col justify-center px-8 py-10 overflow-y-auto" style={{ width: "45%" }}>
-              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">아이디어</p>
-              <h3 className="text-xl font-bold text-gray-900 leading-snug mb-4">{lightbox.title}</h3>
-              <div className="h-0.5 w-10 bg-primary mb-5" />
-              <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{lightbox.desc}</p>
+            <div className="flex flex-col justify-center px-5 py-6 overflow-y-auto border-l border-gray-100" style={{ width: "28%" }}>
+              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">아이디어</p>
+              <h3 className="text-sm font-bold text-gray-900 leading-snug mb-3">{lightbox.title}</h3>
+              <div className="h-0.5 w-8 bg-primary mb-3" />
+              <p className="text-xs text-gray-600 leading-relaxed whitespace-pre-line">{lightbox.desc}</p>
             </div>
           </div>
         </div>
