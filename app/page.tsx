@@ -70,12 +70,42 @@ const faqs = [
 ];
 
 const ideaImages = [
-  { src: "/idea_1.png", alt: "아이디어 1" },
-  { src: "/idea_2.png", alt: "아이디어 2" },
-  { src: "/idea_3.png", alt: "아이디어 3" },
-  { src: "/idea_4.png", alt: "아이디어 4" },
-  { src: "/idea_5.png", alt: "아이디어 5" },
-  { src: "/idea_6.png", alt: "아이디어 6" },
+  {
+    src: "/idea_1.png",
+    alt: "아이디어 1",
+    title: "Wonn-Factory-MES",
+    desc: "말 한마디로 작동하는 AI 제조실행시스템. 국내 중소제조기업 80%가 아직 수작업·엑셀로 생산관리 중이며, 이 시장을 음성·자연어 기반 SaaS MES로 공략합니다.",
+  },
+  {
+    src: "/idea_2.png",
+    alt: "아이디어 2",
+    title: "기존 MES와 무엇이 다른가?",
+    desc: "기존 MES의 3가지 핵심 장벽(복잡한 UI·고비용·현장 접근성 한계)을 Wonn이 어떻게 해결하는지 직접 비교합니다. 자연어·음성 AI 인터페이스가 핵심 차별점입니다.",
+  },
+  {
+    src: "/idea_3.png",
+    alt: "아이디어 3",
+    title: "핵심 기술 ① 음성·자연어 AI Agent",
+    desc: "음성 입력 → STT → LLM 의도 파악 → MES 실행 → 음성 응답까지 5단계 처리 흐름. '양품 100개 생성', 'B공장으로 볼트 2개 이동' 등 실제 현장 시나리오 4가지를 함께 제시합니다.",
+  },
+  {
+    src: "/idea_4.png",
+    alt: "아이디어 4",
+    title: "핵심 기술 ② 이중 AI 엔진·기술 아키텍처",
+    desc: "대화형 명령 AI(LLM 기반)와 불량 예측 AI(IoT 센서·생산 이력 기반) 두 엔진이 같은 DB를 공유하며 동시에 작동하는 구조. 현장 인터페이스부터 데이터·예측까지 4 Layer 아키텍처를 정리합니다.",
+  },
+  {
+    src: "/idea_5.png",
+    alt: "아이디어 5",
+    title: "고객 성장 여정 (₩25,000 맛보기 → Enterprise)",
+    desc: "월 25,000원으로 진입장벽을 낮추고, Pro/Business 확장 → 정부 지원사업 연계 IoT 연결 → Enterprise 전환까지 이어지는 4단계 고객 성장 구조를 보여줍니다.",
+  },
+  {
+    src: "/idea_6.png",
+    alt: "아이디어 6",
+    title: "성장 로드맵 (2026~)",
+    desc: "2026년 MVP·파일럿 완성부터 2030년 이후 제조 AI 플랫폼화까지 Phase 1~4 목표와 핵심 마일스톤을 타임라인으로 정리합니다.",
+  },
 ];
 
 export default function Home() {
@@ -154,8 +184,12 @@ export default function Home() {
               <button
                 key={idx}
                 onClick={() => setLightboxSrc(img.src)}
-                className="overflow-hidden rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-primary"
+                className="overflow-hidden rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-primary text-left"
               >
+                <div className="px-4 pt-4 pb-3">
+                  <p className="text-sm font-bold text-gray-900 leading-snug">{img.title}</p>
+                  <p className="text-xs text-gray-500 mt-1 leading-relaxed line-clamp-2">{img.desc}</p>
+                </div>
                 <div className="relative w-full aspect-video">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${img.src}`}
