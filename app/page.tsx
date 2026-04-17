@@ -352,9 +352,9 @@ export default function Home() {
               style={{ width: "22%" }}
             >
               <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">아이디어</p>
-              <h3 className="text-sm font-bold text-gray-900 leading-snug mb-3">{lightbox.title}</h3>
+              <h3 className="text-lg font-bold text-gray-900 leading-snug mb-3">{lightbox.title}</h3>
               <div className="h-0.5 w-8 bg-primary mb-3" />
-              <p className="text-xs text-gray-600 leading-relaxed whitespace-pre-line">{lightbox.desc}</p>
+              <p className="text-base text-gray-600 leading-relaxed whitespace-pre-line">{lightbox.desc}</p>
             </div>
           </div>
         </div>
