@@ -110,7 +110,7 @@ const ideaImages = [
 
 export default function Home() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<{ src: string; title: string; desc: string } | null>(null);
 
   return (
     <div className="min-h-screen bg-[#FAFBFB]">
@@ -183,7 +183,7 @@ export default function Home() {
             {ideaImages.map((img, idx) => (
               <button
                 key={idx}
-                onClick={() => setLightboxSrc(img.src)}
+                onClick={() => setLightbox({ src: img.src, title: img.title, desc: img.desc })}
                 className="overflow-hidden rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-primary text-left"
               >
                 <div className="px-4 pt-4 pb-3">
@@ -311,30 +311,42 @@ export default function Home() {
       </main>
 
       {/* ── 라이트박스 ── */}
-      {lightboxSrc && (
+      {lightbox && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
-          onClick={() => setLightboxSrc(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6"
+          onClick={() => setLightbox(null)}
         >
           <div
-            className="relative"
-            style={{ width: "80vw", height: "80vh" }}
+            className="relative bg-white rounded-xl shadow-2xl flex overflow-hidden"
+            style={{ width: "80vw", maxHeight: "80vh" }}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* 닫기 버튼 */}
             <button
-              onClick={() => setLightboxSrc(null)}
-              className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors flex items-center gap-1 text-sm font-medium"
+              onClick={() => setLightbox(null)}
+              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-colors text-lg font-bold"
               aria-label="닫기"
             >
-              <span>✕</span>
-              <span>닫기</span>
+              ✕
             </button>
-            <Image
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${lightboxSrc}`}
-              alt="아이디어 이미지 확대"
-              fill
-              className="object-contain"
-            />
+
+            {/* 왼쪽: 이미지 */}
+            <div className="relative flex-shrink-0" style={{ width: "55%" }}>
+              <Image
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${lightbox.src}`}
+                alt={lightbox.title}
+                fill
+                className="object-contain bg-gray-50"
+              />
+            </div>
+
+            {/* 오른쪽: 제목 + 설명 */}
+            <div className="flex flex-col justify-center px-8 py-10 overflow-y-auto" style={{ width: "45%" }}>
+              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">아이디어</p>
+              <h3 className="text-xl font-bold text-gray-900 leading-snug mb-4">{lightbox.title}</h3>
+              <div className="h-0.5 w-10 bg-primary mb-5" />
+              <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{lightbox.desc}</p>
+            </div>
           </div>
         </div>
       )}
