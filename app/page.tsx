@@ -69,8 +69,18 @@ const faqs = [
   },
 ];
 
+const ideaImages = [
+  { src: "/idea_1.png", alt: "아이디어 1" },
+  { src: "/idea_2.png", alt: "아이디어 2" },
+  { src: "/idea_3.png", alt: "아이디어 3" },
+  { src: "/idea_4.png", alt: "아이디어 4" },
+  { src: "/idea_5.png", alt: "아이디어 5" },
+  { src: "/idea_6.png", alt: "아이디어 6" },
+];
+
 export default function Home() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-[#FAFBFB]">
@@ -134,6 +144,31 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* ── 아이디어 갤러리 ── */}
+        <section id="ideas" className="mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-2">아이디어</h2>
+          <div className="h-1 w-full bg-primary mb-8" />
+
+          <div className="grid grid-cols-3 grid-rows-2 gap-4">
+            {ideaImages.map((img, idx) => (
+              <button
+                key={idx}
+                onClick={() => setLightboxSrc(img.src)}
+                className="overflow-hidden rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <div className="relative w-full aspect-video">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${img.src}`}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+
         {/* ── 발표 영상 ── */}
         <section
           id="video"
@@ -240,6 +275,35 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* ── 라이트박스 ── */}
+      {lightboxSrc && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          onClick={() => setLightboxSrc(null)}
+        >
+          <div
+            className="relative"
+            style={{ width: "80vw", height: "80vh" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setLightboxSrc(null)}
+              className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors flex items-center gap-1 text-sm font-medium"
+              aria-label="닫기"
+            >
+              <span>✕</span>
+              <span>닫기</span>
+            </button>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${lightboxSrc}`}
+              alt="아이디어 이미지 확대"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 mt-16">
