@@ -175,7 +175,10 @@ export default function Home() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* ── 아이디어 갤러리 ── */}
-        <section id="ideas" className="mb-16">
+        <section
+          id="ideas"
+          className="mb-16"
+        >
           <h2 className="text-4xl font-bold text-gray-900 mb-2">아이디어</h2>
           <div className="h-1 w-full bg-primary mb-8" />
 
@@ -318,7 +321,7 @@ export default function Home() {
         >
           <div
             className="relative bg-white rounded-xl shadow-2xl flex overflow-hidden"
-            style={{ width: "80vw", maxHeight: "80vh" }}
+            style={{ width: "92vw", height: "88vh" }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* 닫기 버튼 */}
@@ -331,7 +334,10 @@ export default function Home() {
             </button>
 
             {/* 왼쪽: 이미지 */}
-            <div className="relative flex-shrink-0" style={{ width: "72%" }}>
+            <div
+              className="relative flex-shrink-0 h-full"
+              style={{ width: "78%" }}
+            >
               <Image
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${lightbox.src}`}
                 alt={lightbox.title}
@@ -341,7 +347,10 @@ export default function Home() {
             </div>
 
             {/* 오른쪽: 제목 + 설명 */}
-            <div className="flex flex-col justify-center px-5 py-6 overflow-y-auto border-l border-gray-100" style={{ width: "28%" }}>
+            <div
+              className="flex flex-col justify-center px-5 py-8 overflow-y-auto border-l border-gray-100"
+              style={{ width: "22%" }}
+            >
               <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">아이디어</p>
               <h3 className="text-sm font-bold text-gray-900 leading-snug mb-3">{lightbox.title}</h3>
               <div className="h-0.5 w-8 bg-primary mb-3" />
