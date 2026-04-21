@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Search, ChevronDown, Paperclip, Download } from "lucide-react";
 import Image from "next/image";
+import AgentOrchestration from "@/components/AgentOrchestration";
 
 const notices = [
   {
@@ -174,6 +175,8 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <AgentOrchestration />
+
         {/* ── 아이디어 갤러리 ── */}
         <section
           id="ideas"
